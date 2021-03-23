@@ -1,4 +1,5 @@
 import 'package:Plant_shop_ui/models/plant.dart';
+import 'package:Plant_shop_ui/screens/plant_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -138,88 +139,104 @@ class _ShopScreenState extends State<ShopScreen>
                           ),
                         );
                       },
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xFF32A060),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            margin: EdgeInsets.fromLTRB(10, 10, 10, 30),
-                            child: Stack(
-                              children: [
-                                Center(
-                                  child: Hero(
-                                      tag: plants[i].imageUrl,
-                                      child: Image(
-                                        height: 280,
-                                        width: 280,
-                                        image: AssetImage(
-                                            'assets/images/plant$i.png'),
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
-                                Positioned(
-                                  right: 30,
-                                  top: 30,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'FROM',
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.white),
-                                      ),
-                                      Text(
-                                        '\$${plants[i].price}',
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 30,
-                                  bottom: 30,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        '${plants[i].category}',
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.white),
-                                      ),
-                                      Text(
-                                        '${plants[i].name}',
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 4,
-                            child: RawMaterialButton(
-                              onPressed: () => print('clicked'),
-                              padding: EdgeInsets.all(15),
-                              shape: CircleBorder(),
-                              fillColor: Colors.black,
-                              child: Icon(
-                                Icons.add_shopping_cart,
-                                color: Colors.white,
-                                size: 30,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) => PlantDetails(
+                                plant: plants[i],
                               ),
                             ),
-                          ),
-                        ],
+                          );
+                        },
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFF32A060),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              margin: EdgeInsets.fromLTRB(10, 10, 10, 30),
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: Hero(
+                                        tag: plants[i].imageUrl,
+                                        child: Image(
+                                          height: 280,
+                                          width: 280,
+                                          image: AssetImage(
+                                              'assets/images/plant$i.png'),
+                                          fit: BoxFit.cover,
+                                        )),
+                                  ),
+                                  Positioned(
+                                    right: 30,
+                                    top: 30,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'FROM',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                          '\$${plants[i].price}',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 30,
+                                    bottom: 30,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '${plants[i].category}',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                          '${plants[i].name}',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 4,
+                              child: RawMaterialButton(
+                                onPressed: () => print('clicked'),
+                                padding: EdgeInsets.all(15),
+                                shape: CircleBorder(),
+                                fillColor: Colors.black,
+                                child: Icon(
+                                  Icons.add_shopping_cart,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
